@@ -1,26 +1,1875 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Great+Vibes&display=swap');
+
 @import "tailwindcss";
 
+/* =================================
+   MY WISHORA — DESIGN SYSTEM
+================================= */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ivory: #F8F3ED;
+  --cream: #EFE5DC;
+  --sand: #DCCBC0;
+  --dusty-rose: #A98280;
+  --rose-light: #D5B9B0;
+  --taupe: #95847C;
+  --cocoa: #493B38;
+  --deep-cocoa: #302624;
+  --muted: #786B65;
+  --wine: #3B071B;
+  --pink-heart: #E88BAF;
+  --champagne: #D9B99D;
+  --line: rgba(73, 59, 56, 0.16);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 30px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: var(--ivory);
+  color: var(--cocoa);
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+main {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: var(--rose-light);
+  color: var(--deep-cocoa);
+}
+
+/* =================================
+   LOGO
+================================= */
+
+.brand-logo {
+  display: inline-flex;
+  align-items: baseline;
+  position: relative;
+  color: var(--wine);
+  font-family: Georgia, serif;
+  white-space: nowrap;
+  line-height: 1;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.brand-logo:hover {
+  opacity: 0.82;
+}
+
+.logo-big {
+  font-size: 48px;
+  font-weight: 600;
+}
+
+.logo-small {
+  font-size: 29px;
+  font-weight: 500;
+}
+
+.footer-brand .logo-big {
+  font-size: 39px;
+}
+
+.footer-brand .logo-small {
+  font-size: 23px;
+}
+
+/* =================================
+   COMMON ELEMENTS
+================================= */
+
+.home-page .section-padding {
+  padding: 100px 10%;
+}
+
+.home-page .eyebrow {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  line-height: 1.8;
+  text-transform: uppercase;
+}
+
+.home-page .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  min-height: 52px;
+  padding: 0 24px;
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.home-page .button span {
+  font-size: 15px;
+}
+
+.home-page .button-light {
+  background: var(--ivory);
+  color: var(--cocoa);
+}
+
+.home-page .button-light:hover {
+  background: var(--rose-light);
+  transform: translateY(-3px);
+}
+
+/* =================================
+   NAVIGATION
+================================= */
+
+.home-page .navbar {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 96px;
+  padding: 0 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  color: var(--ivory);
+  border-bottom: 1px solid rgba(246, 241, 233, 0.2);
+}
+
+.home-page .navbar .brand-logo {
+  color: var(--ivory);
+}
+
+.home-page .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.home-page .nav-links a,
+.home-page .nav-cta {
+  font-size: 9px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+}
+
+.home-page .nav-links a:hover,
+.home-page .nav-cta:hover {
+  opacity: 0.65;
+}
+
+.home-page .nav-cta {
+  flex-shrink: 0;
+  padding: 13px 16px;
+  border: 1px solid rgba(246, 241, 233, 0.55);
+}
+
+.home-page .nav-cta span {
+  margin-left: 10px;
+}
+
+/* =================================
+   HERO
+================================= */
+
+.home-page .hero {
+  min-height: 790px;
+  height: 100vh;
+  max-height: 1000px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--deep-cocoa);
+  color: var(--ivory);
+}
+
+.home-page .hero-image {
+  object-fit: cover;
+  object-position: center 45%;
+  z-index: 0;
+}
+
+.home-page .hero-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(35, 27, 24, 0.72) 0%,
+      rgba(35, 27, 24, 0.43) 52%,
+      rgba(35, 27, 24, 0.12) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(35, 27, 24, 0.38),
+      transparent 45%
+    );
+}
+
+.home-page .hero-frame {
+  position: absolute;
+  z-index: 2;
+  inset: 22px;
+  border: 1px solid rgba(246, 241, 233, 0.3);
+  pointer-events: none;
+}
+
+.home-page .hero-content {
+  position: relative;
+  z-index: 3;
+  width: min(700px, 80%);
+  margin-left: 12%;
+  padding-top: 60px;
+}
+
+.home-page .hero-eyebrow {
+  color: var(--rose-light);
+  margin-bottom: 27px;
+}
+
+.home-page .hero h1 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(66px, 8vw, 112px);
+  font-weight: 400;
+  letter-spacing: -3px;
+  line-height: 0.91;
+}
+
+.home-page .hero h1 em {
+  color: var(--rose-light);
+  font-weight: 400;
+}
+
+.home-page .hero-description {
+  max-width: 470px;
+  margin: 31px 0 35px;
+  color: rgba(246, 241, 233, 0.86);
+  font-size: 13px;
+  line-height: 2;
+  font-weight: 300;
+}
+
+.home-page .hero-taglines {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.home-page .hero-taglines p {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 21px;
+  font-style: italic;
+  color: white;
+}
+
+.home-page .hero-taglines span {
+  color: white;
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.home-page .hero-bottom {
+  position: absolute;
+  z-index: 3;
+  bottom: 48px;
+  left: 12%;
+  right: 12%;
+  display: flex;
+  justify-content: space-between;
+  color: rgba(246, 241, 233, 0.75);
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+/* =================================
+   OUR WORLD / INTRO
+================================= */
+
+.home-page .intro {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.25fr 2.5fr 0.25fr;
+  align-items: center;
+  min-height: 0;
+  padding: 48px 10%;
+  overflow: hidden;
+  background: var(--ivory);
+}
+
+.home-page .intro-side {
+  align-self: center;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--taupe);
+}
+
+.home-page .intro-main {
+  position: relative;
+  z-index: 1;
+  padding: 0;
+}
+
+.home-page .intro-main .eyebrow {
+  color: var(--dusty-rose);
+}
+
+.home-page .intro h2 {
+  margin: 10px 0 12px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(40px, 4.5vw, 62px);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -1.5px;
+}
+
+.home-page .intro h2 em {
+  color: var(--dusty-rose);
+}
+
+.home-page .intro-copy {
+  max-width: 460px;
+  margin: 12px 0 18px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.home-page .text-link {
+  display: inline-flex;
+  gap: 20px;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--dusty-rose);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.home-page .text-link span {
+  font-size: 16px;
+}
+
+.home-page .intro-decoration {
+  justify-self: end;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(100px, 13vw, 180px);
+  color: rgba(185, 142, 135, 0.13);
+  transform: rotate(-12deg);
+  user-select: none;
+}
+
+/* =================================
+   OCCASIONS
+================================= */
+
+.home-page .occasions {
+  padding: 85px 10% 100px;
+  background: #F1E9E1;
+}
+
+.home-page .section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 35px;
+  margin-bottom: 45px;
+}
+
+.home-page .section-heading .eyebrow {
+  color: var(--dusty-rose);
+}
+
+.home-page .section-heading h2 {
+  max-width: 700px;
+  margin: 15px 0 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(45px, 5.3vw, 70px);
+  font-weight: 400;
+  line-height: 1.03;
+  letter-spacing: -1.5px;
+}
+
+.home-page .section-heading h2 em {
+  color: var(--dusty-rose);
+}
+
+.home-page .section-note {
+  max-width: 260px;
+  margin: 0 0 5px;
+  padding-left: 20px;
+  border-left: 1px solid var(--dusty-rose);
+  color: var(--muted);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.home-page .occasion-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.home-page .occasion-card {
+  position: relative;
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  background: transparent;
+  box-shadow: none;
+  transition: transform 0.35s ease;
+}
+
+.home-page .occasion-card:hover {
+  transform: translateY(-5px);
+}
+
+.home-page .occasion-image-wrap {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+  background: var(--sand);
+}
+
+.home-page .occasion-image {
+  object-fit: cover;
+  filter: saturate(0.88);
+  transition: transform 0.8s ease, filter 0.8s ease;
+}
+
+.home-page .occasion-card:hover .occasion-image {
+  transform: scale(1.045);
+  filter: saturate(1);
+}
+
+.home-page .occasion-image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(38, 7, 19, 0.78) 0%,
+    rgba(38, 7, 19, 0.18) 42%,
+    transparent 75%
+  );
+  pointer-events: none;
+}
+
+.home-page .occasion-number {
+  position: absolute;
+  z-index: 3;
+  top: 18px;
+  left: 18px;
+  padding: 9px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(38, 7, 19, 0.38);
+  color: white;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 15px;
+}
+
+.home-page .occasion-arrow {
+  position: absolute;
+  z-index: 3;
+  right: 18px;
+  bottom: 18px;
+  width: 41px;
+  height: 41px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
+  background: rgba(38, 7, 19, 0.25);
+  color: white;
+  font-size: 17px;
+  transition: all 0.3s ease;
+}
+
+.home-page .occasion-card:hover .occasion-arrow {
+  background: var(--ivory);
+  color: var(--wine);
+}
+
+.home-page .occasion-overlay {
+  position: absolute;
+  z-index: 3;
+  left: 27px;
+  right: 65px;
+  bottom: 26px;
+  display: block;
+  color: white;
+  visibility: visible;
+  opacity: 1;
+}
+
+.home-page .occasion-overlay h3 {
+  display: block;
+  margin: 0 0 7px;
+  color: white;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(32px, 3.4vw, 46px);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.home-page .occasion-overlay p {
+  display: block;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* =================================
+   PHILOSOPHY
+================================= */
+
+.home-page .philosophy {
+  position: relative;
+  overflow: hidden;
+  padding: 70px 8% 48px;
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      rgba(169, 130, 128, 0.13),
+      transparent 60%
+    ),
+    var(--wine);
+  color: var(--ivory);
+  text-align: center;
+}
+
+.home-page .philosophy-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.home-page .philosophy-topline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.home-page .philosophy-topline span {
+  color: var(--champagne);
+  font-size: 18px;
+}
+
+.home-page .philosophy .eyebrow {
+  color: var(--champagne);
+  font-size: 9px;
+  letter-spacing: 2.7px;
+}
+
+.home-page .philosophy h2 {
+  margin: 0;
+  color: var(--ivory);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(43px, 5.5vw, 70px);
+  font-weight: 400;
+  line-height: 1.04;
+}
+
+.home-page .philosophy h2 em {
+  color: var(--champagne);
+  font-weight: 400;
+}
+
+.home-page .philosophy-divider {
+  width: 60px;
+  height: 1px;
+  margin: 25px auto 20px;
+  background: var(--champagne);
+}
+
+.home-page .philosophy .philosophy-copy {
+  max-width: 510px;
+  margin: 0 auto 25px;
+  color: rgba(248, 243, 237, 0.82);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.home-page .button-outline {
+  color: var(--ivory);
+  border: 1px solid var(--champagne);
+}
+
+.home-page .button-outline:hover {
+  background: var(--champagne);
+  color: var(--wine);
+}
+
+.home-page .philosophy-footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(248, 243, 237, 0.2);
+  color: var(--champagne);
+  font-size: 8px;
+  letter-spacing: 2.5px;
+}
+
+/* =================================
+   HOW IT WORKS
+================================= */
+
+.home-page .how {
+  padding: 90px 10% 105px;
+  background: var(--ivory);
+}
+
+.home-page .how-heading {
+  margin-bottom: 55px;
+  text-align: center;
+}
+
+.home-page .how-heading .eyebrow {
+  color: var(--dusty-rose);
+}
+
+.home-page .how h2 {
+  margin: 16px 0 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(46px, 5.5vw, 72px);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -1.5px;
+}
+
+.home-page .how h2 em {
+  color: var(--dusty-rose);
+}
+
+.home-page .steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+
+.home-page .step {
+  position: relative;
+  min-height: 285px;
+  padding: 32px 27px;
+  overflow: hidden;
+  background: #EFE5DC;
+  border: 1px solid rgba(149, 132, 124, 0.2);
+  transition: transform 0.35s ease, background 0.35s ease;
+}
+
+.home-page .step:nth-child(2) {
+  background: #E8DAD2;
+  transform: translateY(18px);
+}
+
+.home-page .step:nth-child(3) {
+  background: #EDE3D9;
+}
+
+.home-page .step:hover {
+  transform: translateY(-6px);
+  background: #E3D2C9;
+}
+
+.home-page .step:nth-child(2):hover {
+  transform: translateY(12px);
+}
+
+.home-page .step-number {
+  display: inline-block;
+  color: var(--dusty-rose);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 45px;
+  line-height: 1;
+}
+
+.home-page .step-line {
+  width: 43px;
+  height: 1px;
+  margin: 25px 0;
+  background: var(--dusty-rose);
+}
+
+.home-page .step h3 {
+  max-width: 240px;
+  margin: 0 0 14px;
+  color: var(--cocoa);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 29px;
+  font-weight: 500;
+  line-height: 1.08;
+}
+
+.home-page .step p {
+  max-width: 300px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+/* =================================
+   CLOSING SECTION
+================================= */
+
+.home-page .closing {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 580px;
+  background: #E9DCD2;
+}
+
+.home-page .closing-visual {
+  position: relative;
+  min-height: 580px;
+  overflow: hidden;
+  background: var(--taupe);
+}
+
+.home-page .closing-image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.home-page .closing-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(35, 27, 24, 0.5),
+    transparent 45%
+  );
+}
+
+.home-page .closing-image-caption {
+  position: absolute;
+  z-index: 2;
+  bottom: 32px;
+  left: 35px;
+  right: 35px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: white;
+  font-size: 8px;
+  letter-spacing: 1.3px;
+}
+
+.home-page .closing-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 75px 11%;
+  background: #E9DCD2;
+}
+
+.home-page .closing-content .eyebrow {
+  color: var(--dusty-rose);
+}
+
+.home-page .closing h2 {
+  margin: 22px 0;
+  color: var(--cocoa);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(42px, 4.6vw, 64px);
+  font-weight: 400;
+  line-height: 1.03;
+  letter-spacing: -1.3px;
+}
+
+.home-page .closing h2 em {
+  color: var(--dusty-rose);
+}
+
+.home-page .closing-rule {
+  width: 60px;
+  height: 1px;
+  margin: 4px 0 20px;
+  background: var(--dusty-rose);
+}
+
+.home-page .closing-content > p:not(.eyebrow) {
+  max-width: 390px;
+  margin: 0 0 26px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 2;
+}
+
+.home-page .button-dark {
+  background: var(--wine);
+  color: var(--ivory);
+}
+
+.home-page .button-dark:hover {
+  background: var(--deep-cocoa);
+  transform: translateY(-3px);
+}
+
+.home-page .closing-note {
+  margin-top: 30px;
+  color: var(--taupe);
+  font-size: 8px;
+  letter-spacing: 1.8px;
+}
+
+/* =================================
+   FOOTER
+================================= */
+
+.home-page .footer {
+  min-height: 210px;
+  padding: 35px 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--deep-cocoa);
+  color: var(--ivory);
+  text-align: center;
+}
+
+.home-page .footer .brand-logo {
+  color: var(--ivory);
+}
+
+.home-page .footer > p {
+  margin: 0;
+  color: rgba(246, 241, 233, 0.8);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 19px;
+  font-style: italic;
+}
+
+.home-page .footer .footer-supporting-tagline {
+  margin-top: 0;
+  color: var(--champagne);
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.home-page .footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin: 13px 0;
+}
+
+.home-page .footer-links a {
+  color: rgba(246, 241, 233, 0.8);
+  font-size: 9px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.home-page .footer-links a:hover {
+  color: var(--champagne);
+}
+
+.home-page .footer > span {
+  color: rgba(246, 241, 233, 0.5);
+  font-size: 8px;
+  letter-spacing: 1.4px;
+}
+
+/* =================================
+   TABLET
+================================= */
+
+@media (max-width: 1000px) {
+  .home-page .navbar {
+    padding: 0 5%;
+  }
+
+  .home-page .nav-links {
+    gap: 15px;
+  }
+
+  .home-page .nav-links a,
+  .home-page .nav-cta {
+    font-size: 8px;
+    letter-spacing: 0.8px;
+  }
+
+  .home-page .section-padding {
+    padding-left: 7%;
+    padding-right: 7%;
+  }
+
+  .home-page .occasion-image-wrap {
+    height: 350px;
+  }
+
+  .home-page .closing-content {
+    padding: 60px 8%;
+  }
+}
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 700px) {
+  .home-page .navbar {
+    min-height: 76px;
+    padding: 0 6%;
+  }
+
+  .home-page .navbar .brand-logo .logo-big {
+    font-size: 39px;
+  }
+
+  .home-page .navbar .brand-logo .logo-small {
+    font-size: 24px;
+  }
+
+  .home-page .nav-links {
+    display: none;
+  }
+
+  .home-page .nav-cta {
+    padding: 11px 12px;
+    font-size: 8px;
+  }
+
+  .home-page .hero {
+    min-height: 720px;
+    height: 90vh;
+  }
+
+  .home-page .hero-frame {
+    inset: 12px;
+  }
+
+  .home-page .hero-content {
+    width: 86%;
+    margin-left: 8%;
+    padding-top: 45px;
+  }
+
+  .home-page .hero h1 {
+    font-size: clamp(57px, 15vw, 82px);
+    letter-spacing: -2px;
+  }
+
+  .home-page .hero-eyebrow {
+    font-size: 8px;
+    letter-spacing: 2px;
+  }
+
+  .home-page .hero-description {
+    max-width: 390px;
+    font-size: 12px;
+  }
+
+  .home-page .hero-taglines p {
+    font-size: 19px;
+  }
+
+  .home-page .hero-taglines span {
+    font-size: 9px;
+  }
+
+  .home-page .hero-bottom {
+    left: 8%;
+    right: 8%;
+    bottom: 30px;
+    font-size: 8px;
+  }
+
+  .home-page .section-padding {
+    padding: 65px 7%;
+  }
+
+  .home-page .intro {
+    min-height: 0;
+    grid-template-columns: 20px 1fr;
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+
+  .home-page .intro-side {
+    font-size: 7px;
+  }
+
+  .home-page .intro-main {
+    padding: 0;
+  }
+
+  .home-page .intro h2 {
+    font-size: 42px;
+  }
+
+  .home-page .intro-copy {
+    font-size: 11px;
+  }
+
+  .home-page .intro-decoration {
+    position: absolute;
+    right: 0;
+    bottom: -15px;
+    font-size: 105px;
+  }
+
+  .home-page .section-heading {
+    display: block;
+    margin-bottom: 30px;
+  }
+
+  .home-page .section-heading h2 {
+    font-size: 46px;
+  }
+
+  .home-page .section-note {
+    max-width: 270px;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+
+  .home-page .occasion-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .home-page .occasion-image-wrap {
+    height: 350px;
+  }
+
+  .home-page .occasion-overlay {
+    left: 20px;
+    right: 60px;
+    bottom: 22px;
+  }
+
+  .home-page .occasion-overlay h3 {
+    font-size: 36px;
+  }
+
+  .home-page .occasion-overlay p {
+    font-size: 12px;
+  }
+
+  .home-page .philosophy {
+    padding: 58px 7% 38px;
+  }
+
+  .home-page .philosophy-topline {
+    gap: 12px;
+    margin-bottom: 23px;
+  }
+
+  .home-page .philosophy .eyebrow {
+    font-size: 8px;
+    letter-spacing: 1.8px;
+  }
+
+  .home-page .philosophy h2 {
+    font-size: 44px;
+  }
+
+  .home-page .philosophy-copy {
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .home-page .philosophy-footer {
+    margin-top: 32px;
+    font-size: 7px;
+  }
+
+  .home-page .how {
+    padding-top: 70px;
+    padding-bottom: 75px;
+  }
+
+  .home-page .how-heading {
+    margin-bottom: 38px;
+  }
+
+  .home-page .how h2 {
+    font-size: 46px;
+  }
+
+  .home-page .steps {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .home-page .step,
+  .home-page .step:nth-child(2),
+  .home-page .step:nth-child(3) {
+    min-height: 225px;
+    padding: 28px 25px;
+    transform: none;
+  }
+
+  .home-page .step:hover,
+  .home-page .step:nth-child(2):hover {
+    transform: translateY(-5px);
+  }
+
+  .home-page .step h3 {
+    font-size: 29px;
+  }
+
+  .home-page .closing {
+    grid-template-columns: 1fr;
+  }
+
+  .home-page .closing-visual {
+    min-height: 390px;
+  }
+
+  .home-page .closing-content {
+    padding: 60px 8%;
+  }
+
+  .home-page .closing h2 {
+    font-size: 49px;
+  }
+
+  .home-page .closing-image-caption {
+    left: 20px;
+    right: 20px;
+    bottom: 22px;
+    font-size: 7px;
+  }
+
+  .home-page .footer {
+    padding: 38px 7%;
+  }
+}
+
+/* =================================
+   SMALL PHONES
+================================= */
+
+@media (max-width: 400px) {
+  .home-page .hero h1 {
+    font-size: 53px;
+  }
+
+  .home-page .hero-content {
+    width: 88%;
+  }
+
+  .home-page .intro h2 {
+    font-size: 37px;
+  }
+
+  .home-page .section-heading h2 {
+    font-size: 41px;
+  }
+
+  .home-page .occasion-image-wrap {
+    height: 310px;
+  }
+
+  .home-page .occasion-overlay h3 {
+    font-size: 32px;
+  }
+
+  .home-page .philosophy h2 {
+    font-size: 40px;
+  }
+
+  .home-page .how h2 {
+    font-size: 41px;
+  }
+
+  .home-page .closing h2 {
+    font-size: 44px;
+  }
+}
+/* =========================================
+   MY WISHORA — PREMIUM OCCASIONS SECTION
+========================================= */
+
+.occasions {
+  background: #F8F3ED;
+  padding: 100px 8%;
+}
+
+.occasions .section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 35px;
+  margin-bottom: 42px;
+}
+
+.occasions .section-heading h2 {
+  color: #3B071B;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(38px, 5vw, 58px);
+  font-weight: 500;
+  line-height: 1.05;
+  margin-top: 12px;
+}
+
+.occasions .section-heading h2 em {
+  color: #9B6C5B;
+  font-weight: 400;
+}
+
+.occasions .section-note {
+  max-width: 280px;
+  color: #79665F;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.occasion-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.occasion-card {
+  display: block;
+  min-width: 0;
+  text-decoration: none;
+}
+
+.occasion-image-wrap {
+  position: relative;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 5px;
+  isolation: isolate;
+  background: #3B071B;
+}
+
+.occasion-image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(31, 5, 17, 0.78) 0%,
+    rgba(31, 5, 17, 0.22) 42%,
+    rgba(31, 5, 17, 0.03) 100%
+  );
+  pointer-events: none;
+}
+
+.occasion-image {
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.occasion-card:hover .occasion-image {
+  transform: scale(1.055);
+}
+
+.occasion-number {
+  position: absolute;
+  top: 22px;
+  left: 24px;
+  z-index: 3;
+  color: #FFF8F0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 17px;
+  letter-spacing: 2px;
+}
+
+.occasion-arrow {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  z-index: 3;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,0.65);
+  border-radius: 50%;
+  color: white;
+  font-size: 18px;
+  transition: background 0.3s ease;
+}
+
+.occasion-card:hover .occasion-arrow {
+  background: #F8F3ED;
+  color: #3B071B;
+}
+
+.occasion-overlay {
+  position: absolute !important;
+  left: 28px !important;
+  right: 24px !important;
+  bottom: 27px !important;
+  z-index: 3 !important;
+  display: block !important;
+  color: #FFFFFF !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.occasion-overlay h3 {
+  color: #FFFFFF !important;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(27px, 3vw, 36px);
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 0 0 8px;
+}
+
+.occasion-overlay p {
+  color: rgba(255,255,255,0.88) !important;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Tablet and mobile */
+
+@media (max-width: 700px) {
+  .occasions {
+    padding: 70px 6%;
+  }
+
+  .occasions .section-heading {
+    display: block;
+    margin-bottom: 30px;
+  }
+
+  .occasions .section-note {
+    margin-top: 15px;
+  }
+
+  .occasion-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .occasion-image-wrap {
+    height: 310px;
+  }
+
+  .occasion-overlay {
+    left: 22px !important;
+    bottom: 22px !important;
+  }
+}
+
+/* =========================================
+   MY WISHORA — HOW IT WORKS REFINEMENT
+========================================= */
+
+.home-page .how {
+  background: #F8F3ED;
+  padding: 105px 8%;
+}
+
+.home-page .how-heading {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 58px;
+}
+
+.home-page .how-heading .eyebrow {
+  color: #9B6C5B;
+  letter-spacing: 3px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.home-page .how h2 {
+  color: #3B071B;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(38px, 5vw, 54px);
+  font-weight: 500;
+  line-height: 1.1;
+  margin-top: 14px;
+}
+
+.home-page .steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.home-page .step {
+  position: relative;
+  min-height: 260px;
+  padding: 34px 30px;
+  background: #FFFCF8;
+  border: 1px solid rgba(59, 7, 27, 0.10);
+  border-radius: 5px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.home-page .step:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 16px 35px rgba(59, 7, 27, 0.08);
+}
+
+.home-page .step-number {
+  color: #A77D69;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 35px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.home-page .step-line {
+  width: 42px;
+  height: 1px;
+  background: #B88E78;
+  margin: 24px 0;
+}
+
+.home-page .step h3 {
+  color: #3B071B;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 1.15;
+  margin-bottom: 13px;
+}
+
+.home-page .step p {
+  color: #796B64;
+  font-size: 13px;
+  line-height: 1.9;
+  max-width: 290px;
+}
+
+/* Mobile layout */
+
+@media (max-width: 750px) {
+  .home-page .how {
+    padding: 75px 6%;
+  }
+
+  .home-page .how-heading {
+    margin-bottom: 35px;
+  }
+
+  .home-page .steps {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .home-page .step {
+    min-height: auto;
+    padding: 27px 25px;
+  }
+
+  .home-page .step-line {
+    margin: 18px 0;
+  }
+}
+
+/* =========================================
+   MY WISHORA — FINAL CELEBRATION SECTION
+========================================= */
+
+.home-page .closing {
+  background: #3B071B;
+  padding: 85px 8%;
+}
+
+.home-page .closing-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 65px;
+}
+
+.home-page .closing-image {
+  position: relative;
+  min-height: 420px;
+  overflow: hidden;
+}
+
+.home-page .closing-image img {
+  object-fit: cover;
+}
+
+.home-page .closing-content {
+  padding: 25px 0;
+}
+
+.home-page .closing-content .eyebrow {
+  color: #D9B99D;
+  font-size: 10px;
+  letter-spacing: 3px;
+  margin-bottom: 22px;
+}
+
+.home-page .closing-content h2 {
+  color: #FFF8F0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(40px, 5vw, 58px);
+  font-weight: 500;
+  line-height: 1.08;
+  margin-bottom: 22px;
+}
+
+.home-page .closing-content p {
+  color: rgba(255, 248, 240, 0.78);
+  font-size: 14px;
+  line-height: 1.9;
+  max-width: 430px;
+}
+
+.home-page .closing-content a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  padding: 15px 29px;
+  background: #F8F3ED;
+  color: #3B071B;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  transition: all 0.3s ease;
+}
+
+.home-page .closing-content a:hover {
+  background: #D9B99D;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 750px) {
+  .home-page .closing {
+    padding: 65px 6%;
+  }
+
+  .home-page .closing-inner {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .home-page .closing-image {
+    min-height: 300px;
+  }
+
+  .home-page .closing-content {
+    padding: 5px 0;
+  }
+}
+
+
+
+/* =========================================
+   MY WISHORA — PREMIUM FOOTER
+========================================= */
+
+.home-page .footer {
+  background: #260713;
+  color: #F8F3ED;
+  padding: 65px 8% 25px;
+}
+
+.home-page .footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home-page .footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 45px;
+  padding-bottom: 45px;
+}
+
+.home-page .footer-brand {
+  max-width: 350px;
+}
+
+.home-page .footer-logo {
+  color: #F8F3ED;
+  margin-bottom: 15px;
+}
+
+.home-page .footer-brand p {
+  color: #D9B99D;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.home-page .footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px 32px;
+  justify-content: flex-end;
+}
+
+.home-page .footer-links a {
+  color: rgba(248, 243, 237, 0.8);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.home-page .footer-links a:hover {
+  color: #D9B99D;
+}
+
+.home-page .footer-bottom {
+  border-top: 1px solid rgba(248, 243, 237, 0.16);
+  padding-top: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.home-page .footer-bottom p {
+  color: rgba(248, 243, 237, 0.6);
+  font-size: 10px;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 700px) {
+  .home-page .footer {
+    padding: 50px 6% 22px;
+  }
+
+  .home-page .footer-top {
+    flex-direction: column;
+    gap: 30px;
+    padding-bottom: 30px;
+  }
+
+  .home-page .footer-links {
+    justify-content: flex-start;
+    gap: 18px 24px;
+  }
+
+  .home-page .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+/* =========================================
+   MY WISHORA — CLOSING TEXT CONTRAST FIX
+========================================= */
+
+.home-page .closing-content .eyebrow {
+  color: #E4C5A9 !important;
+}
+
+.home-page .closing-content h2 {
+  color: #FFF8F0 !important;
+}
+
+.home-page .closing-content h2 em {
+  color: #E4C5A9 !important;
+}
+
+.home-page .closing-content p {
+  color: #F0E2D8 !important;
+  opacity: 1 !important;
+}
+
+.home-page .closing-content a {
+  background: #F8F3ED !important;
+  color: #3B071B !important;
+}
+
+/* My Wishora title — rose red accent */
+.home-page .closing-content h2 em {
+  color: #D98991 !important;
+  font-style: italic;
+}
+
+/* HERO TITLE — MY WISHORA ROSE ACCENT */
+
+.home-page .hero h1 em {
+  color: #bd3442 !important;
+  font-style: italic;
+}
+
+
+/* =========================================
+   MY WISHORA — PREMIUM HOMEPAGE HEADER
+========================================= */
+
+.home-page .site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 22px 7%;
+  background: rgba(38, 7, 19, 0.35);
+  border-bottom: 1px solid rgba(255, 248, 240, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.home-page .header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 35px;
+}
+
+.home-page .logo {
+  color: #FFF8F0;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+
+.home-page .logo:hover {
+  opacity: 0.8;
+}
+
+.home-page .main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.home-page .main-nav a {
+  position: relative;
+  color: #FFF8F0;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.home-page .main-nav a:not(.nav-cta)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  width: 0;
+  height: 1px;
+  background: #D9B99D;
+  transition: width 0.3s ease;
+}
+
+.home-page .main-nav a:not(.nav-cta):hover {
+  color: #E4C5A9;
+}
+
+.home-page .main-nav a:not(.nav-cta):hover::after {
+  width: 100%;
+}
+
+.home-page .main-nav a.nav-cta {
+  padding: 13px 21px;
+  background: #F8F3ED;
+  color: #3B071B;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  transition: all 0.3s ease;
+}
+
+.home-page .main-nav a.nav-cta:hover {
+  background: #D9B99D;
+  transform: translateY(-2px);
+}
+
+/* Mobile header */
+
+@media (max-width: 850px) {
+  .home-page .site-header {
+    padding: 18px 5%;
+  }
+
+  .home-page .header-inner {
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .home-page .main-nav {
+    gap: 17px;
+    flex-wrap: wrap;
+  }
+
+  .home-page .main-nav a {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 520px) {
+  .home-page .main-nav {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 16px;
+  }
+
+  .home-page .main-nav a.nav-cta {
+    padding: 10px 13px;
+  }
 }
